@@ -1,0 +1,6 @@
+#!/bin/yasl
+
+"Hello world\n"
+print
+
+exit
