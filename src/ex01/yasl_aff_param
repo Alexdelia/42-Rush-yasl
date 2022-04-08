@@ -5,9 +5,9 @@
 2#! // drop 2 first arg (ac and name of program)
 
 # // count
-%? // if count != 0
-#( // pop count and do () count times
+@( // while count != 0
 	print
 	"\n"
 	print
+	# // reactualize and repush count
 )
