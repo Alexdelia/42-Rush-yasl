@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/04/08 22:43:28 by adelille         ###   ########.fr        #
+#    Updated: 2022/04/08 22:57:09 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,18 +58,18 @@ test:	ex00 ex01 fclean
 ex00:
 	@$(YASL) $(SRC)$(EX00) > tmp
 	@printf "Hello world\n" > expected
-	-@diff tmp expected
+	@diff tmp expected
 
 ex01:
 	@$(YASL) $(SRC)$(EX01) > tmp
 	@printf "" > expected
-	-@diff tmp expected
+	@diff tmp expected
 	@$(YASL) $(SRC)$(EX01) Hello World 42 "Be Cool" > tmp
 	@printf "Hello\nWorld\n42\nBe Cool\n" > expected
-	-@diff tmp expected
+	@diff tmp expected
 	@$(YASL) $(SRC)$(EX01) "\n" > tmp
 	@printf "\\\n\n" > expected
-	-@diff tmp expected
+	@diff tmp expected
 
 fclean:
 	@$(RM) tmp
