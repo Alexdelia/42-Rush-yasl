@@ -1,5 +1,17 @@
 Personal doc
 
+		** STACKS **
+// if I understand well
+
+ -	:
+$	0:OP:1
+// from stack 0, do OP, then, ouput to stack 1
+$	"hello":2
+// push "hello" to stack 2
+$	2:!
+// delete last elem stack of stack 2
+
+
 		** PUSH **
  -	line with val
 push to stack
