@@ -1,0 +1,13 @@
+#!/bin/yasl
+
+// only use stack 0
+
+2#! // drop 2 first arg (ac and name of program)
+
+# // count
+%? // if count != 0
+#( // pop count and do () count times
+	print
+	"\n"
+	print
+)
