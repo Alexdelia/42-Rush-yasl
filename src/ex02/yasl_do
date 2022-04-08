@@ -10,6 +10,10 @@
 0:=:2 0:! // s0 dup to s2 then s0 poped
 0:=:1 0:! // s0 dup to s1 then s0 poped
 
-1:print
-2:print
-1:print
+{ 0:print "\n":0 0:print 0:0 0:exit } print_exit
+
+"+":2
+2:%== ? (1:%:0 print_exit)
+2:!
+
+// will use roll to separate arg and not dup
