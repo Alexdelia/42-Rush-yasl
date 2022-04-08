@@ -1,4 +1,4 @@
-#!/bin/yasl
+#!../../ressources/yasl_linux
 
 // only use stack 0
 

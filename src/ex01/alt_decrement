@@ -1,4 +1,4 @@
-#!/bin/yasl
+#!../../ressources/yasl_linux
 
 2#(0:!) // drop 2 first arg (ac and name of program)
 
