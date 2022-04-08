@@ -7,17 +7,6 @@ $	"Hello world!"
 $	42
 $	6.9
 
-		** SUBSET / FUNCTION **
- -	{ OP } function
-create a function
-$	{ print "\n" print } print_with_new_line
-// print last stack
-// add "\n" to stack
-// print last stack ("\n")
-
- -	( OP )
-create a subset
-
 
 		** OP **
  -	#
@@ -25,6 +14,19 @@ ouput number of input elem
 
  -	!
 drop last stack elem
+
+
+		** MOD **
+modifier (MOD) add event to OP
+$	MODOP
+
+ -	#
+pop first elem stack, then, repeat OP int times
+$	2#!
+// pop first elem stack
+// repeat OP "!" 2 times (delete 2 last elem stack)
+
+ -	%
 
 
 		** IF / WHILE **
@@ -35,3 +37,17 @@ if + else (ternary)
 
  -	@
 while (first elem stack == true)
+
+
+		** SUBSET / FUNCTION **
+ -	{ OP } function
+create a function
+$	{ print "\n" print } print_with_new_line
+// print last stack
+// add "\n" to stack
+// print last stack ("\n")
+$	print_with_new_line
+// call function
+
+ -	( OP )
+create a subset
