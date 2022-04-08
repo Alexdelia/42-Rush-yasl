@@ -1,0 +1,37 @@
+Personal doc
+
+		** PUSH **
+ -	line with val
+push to stack
+$	"Hello world!"
+$	42
+$	6.9
+
+		** SUBSET / FUNCTION **
+ -	{ OP } function
+create a function
+$	{ print "\n" print } print_with_new_line
+// print last stack
+// add "\n" to stack
+// print last stack ("\n")
+
+ -	( OP )
+create a subset
+
+
+		** OP **
+ -	#
+ouput number of input elem
+
+ -	!
+drop last stack elem
+
+
+		** IF / WHILE **
+ -	?
+if
+ -	? OP : OP
+if + else (ternary)
+
+ -	@
+while (first elem stack == true)
