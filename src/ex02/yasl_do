@@ -4,7 +4,7 @@
 //	if ac != 4
 //		exit 0
 
-!		// pop name of program
+!	// pop name of program
 
 eval:1		// str to int first elem
 =:2 0:!		// dup "+" to stack 2 and drop it from stack 0
@@ -17,21 +17,25 @@ eval:1		// str to int first elem
 //	1	(first arg)
 
 {
-	1:eval	// do op
+	1:!			// pop
+
+	1:eval		// do op
 
 	print		// print res
 	"\n" print	// print new line
 } do_op
 
 // parsing
-"-":1 1:%== ? (1:! do_op) :
-"+":1 1:%== ? 1:! do_op :
-"*":1 1:%== ? 1:! do_op :
-"/":1 1:%== ? 1:! do_op :
-"%":1 1:%== ? 1:! do_op :
-"<":1 1:%== ? 1:! do_op :
-">":1 1:%== ? 1:! do_op :
-"<=":1 1:%== ? 1:! do_op :
-">=":1 1:%== ? 1:! do_op :
-"==":1 1:%== ? 1:! do_op :
-"!=":1 1:%== ? 1:! do_op :
+"-":1 1:%== ? do_op :
+(1:! "+":1 1:%== ? do_op :
+(1:! "*":1 1:%== ? do_op :
+(1:! "/":1 1:%== ? do_op :
+(1:! "%":1 1:%== ? do_op :
+(1:! "<":1 1:%== ? do_op :
+(1:! ">":1 1:%== ? do_op :
+(1:! "<=":1 1:%== ? do_op :
+(1:! ">=":1 1:%== ? do_op :
+(1:! "==":1 1:%== ? do_op :
+(1:! "!=":1 1:%== ? do_op :
+1:! 1:print " isn't supported\n" print
+))))))))))
