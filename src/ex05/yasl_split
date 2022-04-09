@@ -11,48 +11,48 @@
 0:3			// bool start
 
 {
-	6:=:2 8:[#]:2 2:<:2		// if (i < size
-	3:=:2 2:&&:2 2:?		//	&& bool start == true)
-		("\n":0 0:print)		// print "\n"
-	: (						// else
-		6:=:2 8:[#]:2 2:>=:2	// if (i >= size
-		3:=:2 0:2 2:==:2		//	&& bool start == false)
-		2:&&:2 2:?				// do the &&
-			(0:2 2:exit)			// (when string is only sep char)
+	6:= 8:[#] <			// if (i < size
+	3:= && ?			//	&& bool start == true)
+		("\n" print)		// print "\n"
+	: (					// else
+		6:= 8:[#] >=		// if (i >= size
+		3:= 0 ==			//	&& bool start == false)
+		&& ?				// do the &&
+			(0 exit)			// (when string is only sep char)
 	)
 } print_nl
 
 {
-	2:@(					// while (str[i] == sep)
-		1:6 6:+:6				// i++
-		8:=:2 6:=:2 2:%]#[:7	// copy str[i] to s7
-		7:%==:2					// while (str[i] == sep)
-		6:=:2 8:[#]:2 2:<:2		// && (i < size)
-		2:&&:2					// do the &&
-		7:!						// pop copy
+	@(					// while (str[i] == sep)
+		1:6 6:+:6			// i++
+		8:= 6:= %]#[:7		// copy str[i] to s7
+		7:%==				// while (str[i] == sep)
+		6:= 8:[#] <			// && (i < size)
+		&&					// do the &&
+		7:!					// pop copy
 	)
-	print_nl
+	2:print_nl:2
 } sep
 
 {
-	8:=:2 6:=:2 2:%]#[:7		// copy str[i] to s7
-	7:%==:2 2:%?				// if (str[i] == sep)
-	( sep )							// do sep
-	: (							// else
-		8:=:2 6:=:2 2:]#[:2 2:print	// print char
-		1:6 6:+:6					// i++
+	8:= 6:= %]#[:7		// copy str[i] to s7
+	7:%== %?			// if (str[i] == sep)
+	( 2:sep:2 )				// do sep
+	: (					// else
+		8:= 6:= ]#[ print	// print char
+		1:6 6:+:6			// i++
 	)
-	7:!							// pop copy (line 13) //
+	7:!					// pop copy (line 13) //
 
 } if_sep
 
-if_sep							// skip first sep char
-1:3								// bool start = true
-6:=:2 8:[#]:2 2:<:1				// while (i < size)
+2:if_sep:2				// skip first sep char
+1:3						// bool start = true
+6:=:2 8:[#]:2 2:<:1		// while (i < size)
 1:@
 (
-	if_sep
-	6:=:2 8:[#]:2 2:<:1			// while (i < size)
+	2:if_sep:2
+	6:=:2 8:[#]:2 2:<:1	// while (i < size)
 )
 
 "\n":0 0:print
