@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/04/09 22:41:27 by adelille         ###   ########.fr        #
+#    Updated: 2022/04/09 23:11:56 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -140,6 +140,10 @@ ex05:
 	$(call test,$(EX05) e llezz,"ll\nzz\n")
 	$(call test,$(EX05) e eeelleeezzeee,"ll\nzz\n")
 	$(call test,$(EX05) e eee,"")
+	$(call test,$(EX05) a ljksdpoiapoipoialljlaiuoiu,"ljksdpoi\npoipoi\nlljl\niuoiu\n")
+	@$(YASL) $(SRC)$(EX05) " " " Lorem ipsum dolor sit amet, consectetur adipiscing elit. " > you
+	@printf "Lorem\nipsum\ndolor\nsit\namet,\nconsectetur\nadipiscing\nelit.\n" > expected
+	@diff you expected
 
 #ex06:
 #	$(call test,$(EX06),"")
