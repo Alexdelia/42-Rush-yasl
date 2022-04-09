@@ -3,7 +3,12 @@
 3 != ? ( 0 exit )
 !
 
-[#]:1 1:1 1:!=:1 1:? ( "only 1 char alowed to split\n":0 0:print 0:0 0:exit )
+{
+	0:[#] 1 != ?
+		( "only 1 char alowed to split\n" print 0 exit )
+} is_char
+
+1:is_char:1
 
 0:=:7 0:!	// separator
 0:=:8		// string
