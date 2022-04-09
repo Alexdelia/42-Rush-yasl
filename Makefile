@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/04/09 23:11:56 by adelille         ###   ########.fr        #
+#    Updated: 2022/04/09 23:40:06 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ EX03 =	ex03/yasl_repeat
 EX04 =	ex04/yasl_fact
 EX05 =	ex05/yasl_split
 EX06 =	ex06/yasl_interactive
+DISP =	display/display_b64
 
 # *************************************************************************** #
 
