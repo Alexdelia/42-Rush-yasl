@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/04/09 17:59:52 by adelille         ###   ########.fr        #
+#    Updated: 2022/04/09 18:29:08 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,9 @@ EX00 =	ex00/yasl_hw
 EX01 =	ex01/yasl_aff_param
 EX02 =	ex02/yasl_do
 EX03 =	ex03/yasl_repeat
-EX03 =	ex04/yasl_fact
+EX04 =	ex04/yasl_fact
+EX05 =	ex05/yasl_split
+EX06 =	ex06/yasl_interactive
 
 # *************************************************************************** #
 
@@ -70,9 +72,9 @@ endef
 all:	test
 
 man:
-	man ressources/yasl.0
+	man ./ressources/yasl.0
 
-test:	ex00 ex01 ex02 ex03 ex04 fclean
+test:	ex00 ex01 ex02 ex03 ex04 fclean #ex06
 	@printf "$(D)$(B)$(GRE)done$(D)\n"
 
 ex00:
@@ -122,13 +124,16 @@ ex03:
 ex04:
 	$(call test,$(EX04),"")
 	$(call test,$(EX04) 1 1,"")
-	$(call test,$(EX04) 0,"1")
-	$(call test,$(EX04) 1,"1")
-	$(call test,$(EX04) 2,"2")
-	$(call test,$(EX04) 3,"6")
-	$(call test,$(EX04) 4,"24")
-	$(call test,$(EX04) 10,"3628800")
-	$(call test,$(EX04) 100,"")
+	$(call test,$(EX04) 0,"1\n")
+	$(call test,$(EX04) 1,"1\n")
+	$(call test,$(EX04) 2,"2\n")
+	$(call test,$(EX04) 3,"6\n")
+	$(call test,$(EX04) 4,"24\n")
+	$(call test,$(EX04) 10,"3628800\n")
+	$(call test,$(EX04) 100,"overflow\n")
+
+#ex06:
+#	$(call test,$(EX06),"")
 
 fclean:
 	@$(RM) you
