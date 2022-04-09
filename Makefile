@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/04/09 04:58:08 by adelille         ###   ########.fr        #
+#    Updated: 2022/04/09 13:39:30 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRC =	./src/
 EX00 =	ex00/yasl_hw
 EX01 =	ex01/yasl_aff_param
 EX02 =	ex02/yasl_do
+EX03 =	ex03/yasl_repeat
 
 # *************************************************************************** #
 
@@ -130,6 +131,35 @@ ex02:
 	@$(YASL) $(SRC)$(EX02) 42 != 42 > tmp
 	@printf "0" > expected
 	@diff tmp expected
+	#@$(YASL) $(SRC)$(EX02) yes != 42 > tmp
+	#@printf "" > expected
+	#@diff tmp expected	
+
+ex03:
+	@$(YASL) $(SRC)$(EX03) > tmp
+	@printf "" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX03) 1 > tmp
+	@printf "" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX03) 1 yes > tmp
+	@printf "yes\n" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX03) 2 yes > tmp
+	@printf "yesyes\n" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX03) 2 yes no > tmp
+	@printf "yesyes\nnonono\n" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX03) 4 Bonjour "how are you?" > tmp
+	@printf "BonjourBonjourBonjourBonjour\nhow are you?how are you?how are you?how are you?how are you?\n" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX03) 1 "************" "******" "****" "---" > tmp
+	@printf "************\n************\n************\n------------\n" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX03) no yes no > tmp
+	@printf "use int > 0" > expected
+	@diff tmp expected
 
 fclean:
 	@$(RM) tmp
@@ -137,6 +167,6 @@ fclean:
 
 re:		fclean all
 
-.PHONY: all man test ex00 ex01 ex02 ex03 ex04 ex05 ex06 display
+.PHONY: all man test fclean re ex00 ex01 ex02 ex03 ex04 ex05 ex06 display
 
 # **************************************************************************** #
