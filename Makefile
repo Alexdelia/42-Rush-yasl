@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/04/09 13:39:30 by adelille         ###   ########.fr        #
+#    Updated: 2022/04/09 14:30:06 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,24 @@ EX03 =	ex03/yasl_repeat
 
 # *************************************************************************** #
 
+define	diff
+	@diff you expected
+endef
+
+define	test
+	@$(YASL) $(SRC)$(1) > you
+	@printf $(2) > expected
+	@local res=$(diff) ; \
+	if [[ $(res) -ne 0 ]]; then \
+		printf "$(D)$(B)$(MAG)$(1)$(D)\n" ; \
+		printf "\t$(D)$(B)$(GRE)expected:$(D)\n$(GRE)"; \
+		cat expected; \
+		printf "$(D)\n\t$(B)$(RED)you:$(D)\n$(RED)"; \
+		cat you; \
+		exit 1; \
+	fi;
+endef
+
 # *************************************************************************** #
 #	RULES	#
 
@@ -57,81 +75,43 @@ all:	test
 man:
 	man ressources/yasl.0
 
-test:	ex00 ex01 fclean
+test:	ex00 ex01 ex02 ex03 fclean
 	@printf "$(D)$(B)$(GRE)done$(D)\n"
 
 ex00:
-	@$(YASL) $(SRC)$(EX00) > tmp
-	@printf "Hello world\n" > expected
-	@diff tmp expected
+	$(call test,$(EX00),"Hello world\n")
+	$(call test,$(EX00) hello,"Hello world\n")
 
 ex01:
-	@$(YASL) $(SRC)$(EX01) > tmp
-	@printf "" > expected
-	@diff tmp expected
-	@$(YASL) $(SRC)$(EX01) Hello World 42 "Be Cool" > tmp
-	@printf "Hello\nWorld\n42\nBe Cool\n" > expected
-	@diff tmp expected
-	@$(YASL) $(SRC)$(EX01) "\n" > tmp
-	@printf "\\\n\n" > expected
-	@diff tmp expected
+	$(call test,$(EX01),"")
+	$(call test,$(EX01) Hello World 42 "Be Cool","Hello\nWorld\n42\nBe Cool\n")
+	$(call test,$(EX01) "\n","\\\n\n")
 
 ex02:
-	@$(YASL) $(SRC)$(EX02) > tmp
-	@printf "" > expected
-	@diff tmp expected
-	@$(YASL) $(SRC)$(EX02) 1 > tmp
-	@printf "" > expected
-	@diff tmp expected
-	@$(YASL) $(SRC)$(EX02) 1 + > tmp
-	@printf "" > expected
-	@diff tmp expected
-	@$(YASL) $(SRC)$(EX02) 1 + 1 no > tmp
-	@printf "" > expected
-	@diff tmp expected
-	@$(YASL) $(SRC)$(EX02) 42 no 42 > tmp
-	@printf "no isn't supported" > expected
-	@diff tmp expected
-	@$(YASL) $(SRC)$(EX02) 21 - 42 > tmp
-	@printf "-21" > expected
-	@diff tmp expected
-	@$(YASL) $(SRC)$(EX02) 3 "+" 20 > tmp
-	@printf "23" > expected
-	@diff tmp expected
-	@$(YASL) $(SRC)$(EX02) 3 * 5 > tmp
-	@printf "15" > expected
-	@diff tmp expected
-	@$(YASL) $(SRC)$(EX02) 3 / 9 > tmp
-	@printf "3" > expected
-	@diff tmp expected
-	@$(YASL) $(SRC)$(EX02) 42 % 10 > tmp
-	@printf "2" > expected
-	@diff tmp expected
-	@$(YASL) $(SRC)$(EX02) 42 > 21 > tmp
-	@printf "1" > expected
-	@diff tmp expected
-	@$(YASL) $(SRC)$(EX02) 42 < 21 > tmp
-	@printf "0" > expected
-	@diff tmp expected
-	@$(YASL) $(SRC)$(EX02) 42 >= 42 > tmp
-	@printf "1" > expected
-	@diff tmp expected
-	@$(YASL) $(SRC)$(EX02) 42 <= 21 > tmp
-	@printf "0" > expected
-	@diff tmp expected
-	@$(YASL) $(SRC)$(EX02) 42 == 21 > tmp
-	@printf "0" > expected
-	@diff tmp expected
-	@$(YASL) $(SRC)$(EX02) 42 == 42 > tmp
-	@printf "1" > expected
-	@diff tmp expected
-	@$(YASL) $(SRC)$(EX02) 42 != 21 > tmp
-	@printf "1" > expected
-	@diff tmp expected
-	@$(YASL) $(SRC)$(EX02) 42 != 42 > tmp
-	@printf "0" > expected
-	@diff tmp expected
+	$(call test,$(EX02),"")
+	$(call test,$(EX02) 1,"")
+	$(call test,$(EX02) 1 +,"")
+	$(call test,$(EX02) 1 + 1 no,"")
+	$(call test,$(EX02) 42 no 42,"no isn't supported\n")
+	@$(YASL) $(SRC)$(EX02) 21 - 42 > you
+	@echo "-21" > expected
+	@diff you expected
+	$(call test,$(EX02) 3 "+" 20,"23\n")
+	$(call test,$(EX02) 3 "*" 5,"15\n")
+	$(call test,$(EX02) 9 / 3,"3\n")
+	$(call test,$(EX02) 42 % 10,"2\n")
+	$(call test,$(EX02) 42 > 21,"1\n")
+	$(call test,$(EX02) 42 < 21,"0\n")
+	$(call test,$(EX02) 42 >= 42,"1\n")
+	$(call test,$(EX02) 42 <= 21,"0\n")
+	$(call test,$(EX02) 42 == 21,"0\n")
+	$(call test,$(EX02) 42 == 42,"1\n")
+	$(call test,$(EX02) 42 != 21,"1\n")
+	$(call test,$(EX02) 42 != 42,"0\n")
 	#@$(YASL) $(SRC)$(EX02) yes != 42 > tmp
+	#@printf "" > expected
+	#@diff tmp expected	
+	#@$(YASL) $(SRC)$(EX02) 42n != 42 > tmp
 	#@printf "" > expected
 	#@diff tmp expected	
 
@@ -160,9 +140,12 @@ ex03:
 	@$(YASL) $(SRC)$(EX03) no yes no > tmp
 	@printf "use int > 0" > expected
 	@diff tmp expected
+	#@$(YASL) $(SRC)$(EX03) 2y yes no > tmp
+	#@printf "use int > 0" > expected
+	#@diff tmp expected
 
 fclean:
-	@$(RM) tmp
+	@$(RM) you
 	@$(RM) expected
 
 re:		fclean all
