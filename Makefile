@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/04/08 22:57:09 by adelille         ###   ########.fr        #
+#    Updated: 2022/04/09 04:11:04 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,9 @@ EX01 =		ex01/yasl_aff_param
 
 all:	test
 
+man:
+	man ressources/yasl.0
+
 test:	ex00 ex01 fclean
 	@printf "$(D)$(B)$(GRE)done$(D)\n"
 
@@ -77,6 +80,6 @@ fclean:
 
 re:		fclean all
 
-.PHONY: all test ex00 ex01 ex02 ex03 ex04 ex05 ex06 display
+.PHONY: all man test ex00 ex01 ex02 ex03 ex04 ex05 ex06 display
 
 # **************************************************************************** #
