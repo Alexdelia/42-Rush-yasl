@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/04/09 17:06:34 by adelille         ###   ########.fr        #
+#    Updated: 2022/04/09 17:59:52 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ EX00 =	ex00/yasl_hw
 EX01 =	ex01/yasl_aff_param
 EX02 =	ex02/yasl_do
 EX03 =	ex03/yasl_repeat
+EX03 =	ex04/yasl_fact
 
 # *************************************************************************** #
 
@@ -71,7 +72,7 @@ all:	test
 man:
 	man ressources/yasl.0
 
-test:	ex00 ex01 ex02 ex03 fclean
+test:	ex00 ex01 ex02 ex03 ex04 fclean
 	@printf "$(D)$(B)$(GRE)done$(D)\n"
 
 ex00:
@@ -117,6 +118,17 @@ ex03:
 	$(call test,$(EX03) 1 "************" "******" "****" "---","************\n************\n************\n------------\n")
 	$(call test,$(EX03) no yes no,"use int\n")
 	$(call test,$(EX03) 2y yes no,"yesyes\nnonono\n")
+
+ex04:
+	$(call test,$(EX04),"")
+	$(call test,$(EX04) 1 1,"")
+	$(call test,$(EX04) 0,"1")
+	$(call test,$(EX04) 1,"1")
+	$(call test,$(EX04) 2,"2")
+	$(call test,$(EX04) 3,"6")
+	$(call test,$(EX04) 4,"24")
+	$(call test,$(EX04) 10,"3628800")
+	$(call test,$(EX04) 100,"")
 
 fclean:
 	@$(RM) you
