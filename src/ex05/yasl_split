@@ -10,14 +10,13 @@
 0:6			// int i
 
 {
-	"\n":0 0:print
 	1:2
 	2:@(
 		1:6 6:+:6				// i++
 		8:=:2 6:=:2 2:%]#[:7	// copy str[i] to s7
 		7:%==:2					// while (str[i] == sep)
-		6:=:2 8:[#]:2 2:<:2		// && i < size)
-		// do the &&
+		6:=:2 8:[#]:2 2:<:2		// && (i < size)
+		2:&&:2					// do the &&
 		7:!						// pop copy
 	)
 } sep
@@ -27,14 +26,14 @@ sep
 1:@
 (
 	8:=:2 6:=:2 2:%]#[:7		// copy str[i] to s7
-	7:%==:2 2:?	( sep ) : (		// if (str[i] == sep) // do sep
+	7:%==:2 2:?	(				// if (str[i] == sep) // do sep
+	sep 6:=:2 8:[#]:2 2:<:2 2:? ("\n":0 0:print) ) : (		
 	8:=:2 6:=:2 2:]#[:2 2:print	// else // print char
 	1:6 6:+:6 )					// i++
 	7:!							// pop copy
 	6:=:2 8:[#]:2 2:<:1			// while (i < size)
 )
 
-"\n" print
-
+"\n":0 0:print
 // test sep at start
 // test sep at end
