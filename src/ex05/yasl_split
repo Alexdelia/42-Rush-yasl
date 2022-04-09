@@ -1,0 +1,40 @@
+#!../../ressources/yasl_linux
+
+3 != ? ( 0 exit )
+!
+
+[#]:1 1:1 1:!=:1 1:? ( "only 1 char alowed to split\n":0 0:print 0:0 0:exit )
+
+0:=:7 0:!	// separator
+0:=:8		// string
+0:6			// int i
+
+{
+	"\n":0 0:print
+	1:2
+	2:@(
+		1:6 6:+:6				// i++
+		8:=:2 6:=:2 2:%]#[:7	// copy str[i] to s7
+		7:%==:2					// while (str[i] == sep)
+		6:=:2 8:[#]:2 2:<:2		// && i < size)
+		// do the &&
+		7:!						// pop copy
+	)
+} sep
+
+sep
+8:[#]:1
+1:@
+(
+	8:=:2 6:=:2 2:%]#[:7		// copy str[i] to s7
+	7:%==:2 2:?	( sep ) : (		// if (str[i] == sep) // do sep
+	8:=:2 6:=:2 2:]#[:2 2:print	// else // print char
+	1:6 6:+:6 )					// i++
+	7:!							// pop copy
+	6:=:2 8:[#]:2 2:<:1			// while (i < size)
+)
+
+"\n" print
+
+// test sep at start
+// test sep at end

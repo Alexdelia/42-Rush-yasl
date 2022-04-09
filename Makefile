@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/04/09 18:47:27 by adelille         ###   ########.fr        #
+#    Updated: 2022/04/09 19:20:58 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ RM = 	rm -rf
 
 SHELL := bash
 
-ifneq ($(XTERM), "")
 B =		$(shell tput bold)
 BLA =	$(shell tput setaf 0)
 RED =	$(shell tput setaf 1)
@@ -38,7 +37,6 @@ WHI =	$(shell tput setaf 7)
 D =		$(shell tput sgr0)
 BEL =	$(shell tput bel)
 CLR =	$(shell tput el 1)
-endif
 
 # **************************************************************************** #
 #	SRCS	#
@@ -133,9 +131,11 @@ ex04:
 	$(call test,$(EX04) 4,"24\n")
 	$(call test,$(EX04) 10,"3628800\n")
 	$(call test,$(EX04) 100,"overflow\n")
+	$(call test,$(EX04) 010,"40320\n")
 
 #ex06:
 #	$(call test,$(EX06),"")
+#	1 1 %^D
 
 fclean:
 	@$(RM) you
