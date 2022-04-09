@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/04/09 19:20:58 by adelille         ###   ########.fr        #
+#    Updated: 2022/04/09 22:41:27 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ all:	test
 man:
 	man ./ressources/yasl.0
 
-test:	ex00 ex01 ex02 ex03 ex04 fclean #ex06
+test:	ex00 ex01 ex02 ex03 ex04 ex05 fclean #ex06
 	@printf "$(D)$(B)$(GRE)done$(D)\n"
 
 ex00:
@@ -132,6 +132,14 @@ ex04:
 	$(call test,$(EX04) 10,"3628800\n")
 	$(call test,$(EX04) 100,"overflow\n")
 	$(call test,$(EX04) 010,"40320\n")
+
+ex05:
+	$(call test,$(EX05),"")
+	$(call test,$(EX05) 1,"")
+	$(call test,$(EX05) hey no,"only 1 char alowed to split\n")
+	$(call test,$(EX05) e llezz,"ll\nzz\n")
+	$(call test,$(EX05) e eeelleeezzeee,"ll\nzz\n")
+	$(call test,$(EX05) e eee,"")
 
 #ex06:
 #	$(call test,$(EX06),"")
