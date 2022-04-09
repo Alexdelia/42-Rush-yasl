@@ -26,14 +26,14 @@ is_int
 {
 	1:%== ?
 	(
-		1:!			// pop
+		1:!				// pop
+		" ":1 1:+:1		// add space for % and !=
 
-		1:eval		// do op
+		1:eval			// do op
 
-		print		// print res
-		"\n" print	// print new line
+		"\n" + print	// print res + "\n"
 
-		0 exit		// exit 0
+		0 exit			// exit 0
 	) : 1:!
 } do_op
 
@@ -42,11 +42,11 @@ is_int
 "+":1 do_op
 "*":1 do_op
 "/":1 do_op
-"%":1 1:%== ? (2#(1:!) 1:%:1 1:print "\n" print 0 exit) : 1:!
+"%":1 do_op
 "<":1 do_op
 ">":1 do_op
 "<=":1 do_op
 ">=":1 do_op
 "==":1 do_op
-"!=":1 1:%== ? (2#(1:!) 1:!=:1 1:print "\n" print 0 exit) : 1:!
+"!=":1 do_op
 1:print " isn't supported\n" print
