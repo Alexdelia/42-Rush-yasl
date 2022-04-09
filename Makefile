@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/04/09 04:11:04 by adelille         ###   ########.fr        #
+#    Updated: 2022/04/09 04:58:08 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,9 @@ CLR =	$(shell tput el 1)
 #	SRCS	#
 
 SRC =	./src/
-EX00 =		ex00/yasl_hw
-EX01 =		ex01/yasl_aff_param
+EX00 =	ex00/yasl_hw
+EX01 =	ex01/yasl_aff_param
+EX02 =	ex02/yasl_do
 
 # *************************************************************************** #
 
@@ -72,6 +73,62 @@ ex01:
 	@diff tmp expected
 	@$(YASL) $(SRC)$(EX01) "\n" > tmp
 	@printf "\\\n\n" > expected
+	@diff tmp expected
+
+ex02:
+	@$(YASL) $(SRC)$(EX02) > tmp
+	@printf "" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX02) 1 > tmp
+	@printf "" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX02) 1 + > tmp
+	@printf "" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX02) 1 + 1 no > tmp
+	@printf "" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX02) 42 no 42 > tmp
+	@printf "no isn't supported" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX02) 21 - 42 > tmp
+	@printf "-21" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX02) 3 "+" 20 > tmp
+	@printf "23" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX02) 3 * 5 > tmp
+	@printf "15" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX02) 3 / 9 > tmp
+	@printf "3" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX02) 42 % 10 > tmp
+	@printf "2" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX02) 42 > 21 > tmp
+	@printf "1" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX02) 42 < 21 > tmp
+	@printf "0" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX02) 42 >= 42 > tmp
+	@printf "1" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX02) 42 <= 21 > tmp
+	@printf "0" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX02) 42 == 21 > tmp
+	@printf "0" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX02) 42 == 42 > tmp
+	@printf "1" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX02) 42 != 21 > tmp
+	@printf "1" > expected
+	@diff tmp expected
+	@$(YASL) $(SRC)$(EX02) 42 != 42 > tmp
+	@printf "0" > expected
 	@diff tmp expected
 
 fclean:
