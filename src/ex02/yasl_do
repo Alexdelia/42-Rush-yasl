@@ -1,24 +1,22 @@
 #!../../ressources/yasl_linux
 
 4 != ? ( 0 exit )
-// if ac != 4
-// 	exit 0
+//	if ac != 4
+//		exit 0
 
-! // pop name of program
+!		// pop name of program
 
-//2 ^
+eval:1		// str to int first elem
+=:2 0:!		// dup "+" to stack 2 and drop it from stack 0
+eval:1		// str to int first elem
+2:=:1 2:!	// dup "+" to stack 1 and drop it from stack 2
 
-0:eval:1
-//0:eval:1
-//0:eval:1
+//	stack:
+//	"+"	(op)
+//	3	(last arg)
+//	1	(first arg)
 
-1:print
-1:print
-1:print
+1:eval	// do op
 
-"\n"
-print
-
-0:print
-0:print
-0:print
+print		// print res
+"\n" print	// print new line
