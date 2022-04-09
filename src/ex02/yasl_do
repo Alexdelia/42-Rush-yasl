@@ -6,9 +6,16 @@
 
 !	// pop name of program
 
-eval:1		// str to int first elem
+{
+	0:=:1 "0":1 1:<:1 1:? ( "use int\n":1 1:print 0:1 1:exit )
+	0:=:1 "9":1 1:>:1 1:? ( "use int\n":1 1:print 0:1 1:exit )
+} is_int
+
+is_int
+0:0 0:+:1	// str to int first elem
 =:2 0:!		// dup "+" to stack 2 and drop it from stack 0
-eval:1		// str to int first elem
+is_int
+0:0 0:+:1	// str to int first elem
 2:=:1 2:!	// dup "+" to stack 1 and drop it from stack 2
 
 //	stack:

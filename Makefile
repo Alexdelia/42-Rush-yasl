@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/04/09 14:30:06 by adelille         ###   ########.fr        #
+#    Updated: 2022/04/09 16:19:12 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,12 +108,8 @@ ex02:
 	$(call test,$(EX02) 42 == 42,"1\n")
 	$(call test,$(EX02) 42 != 21,"1\n")
 	$(call test,$(EX02) 42 != 42,"0\n")
-	#@$(YASL) $(SRC)$(EX02) yes != 42 > tmp
-	#@printf "" > expected
-	#@diff tmp expected	
-	#@$(YASL) $(SRC)$(EX02) 42n != 42 > tmp
-	#@printf "" > expected
-	#@diff tmp expected	
+	$(call test,$(EX02) yes + 42,"")
+	$(call test,$(EX02) 2n + 5,"7\n")
 
 ex03:
 	@$(YASL) $(SRC)$(EX03) > tmp
