@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/04/09 23:40:06 by adelille         ###   ########.fr        #
+#    Updated: 2022/04/10 00:51:20 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ endef
 all:	test
 
 man:
-	man ./ressources/yasl.0
+	less ./ressources/yasl.0
 
 test:	ex00 ex01 ex02 ex03 ex04 ex05 fclean #ex06
 	@printf "$(D)$(B)$(GRE)done$(D)\n"
