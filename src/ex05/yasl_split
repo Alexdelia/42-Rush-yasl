@@ -24,7 +24,7 @@
 		7:%==				// while (str[i] == sep)
 		6:= 8:[#] <			// && (i < size)
 		&&					// do the &&
-		7:!					// pop copy
+		7:!					// pop copy (line 23)
 	)
 	2:print_nl:2
 } sep
@@ -37,7 +37,7 @@
 		8:= 6:= ]#[ print	// print char
 		1:6 6:+:6			// i++
 	)
-	7:!					// pop copy (line 13) //
+	7:!					// pop copy (line 33)
 
 } if_sep
 
