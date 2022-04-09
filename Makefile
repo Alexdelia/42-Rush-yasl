@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/04/09 18:29:08 by adelille         ###   ########.fr        #
+#    Updated: 2022/04/09 18:47:27 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ RM = 	rm -rf
 
 SHELL := bash
 
+ifneq ($(XTERM), "")
 B =		$(shell tput bold)
 BLA =	$(shell tput setaf 0)
 RED =	$(shell tput setaf 1)
@@ -37,6 +38,7 @@ WHI =	$(shell tput setaf 7)
 D =		$(shell tput sgr0)
 BEL =	$(shell tput bel)
 CLR =	$(shell tput el 1)
+endif
 
 # **************************************************************************** #
 #	SRCS	#
