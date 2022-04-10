@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/04/10 21:49:49 by adelille         ###   ########.fr        #
+#    Updated: 2022/04/10 22:03:00 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -155,6 +155,7 @@ ex05:
 	@diff you expected
 	$(call test,$(EX05) "","")
 	$(call test,$(EX05) "" "","only 1 char alowed to split\n")
+	$(call test,$(EX05) "e" "","no empty string\n")
 
 #ex06:
 #	$(call test,$(EX06),"")

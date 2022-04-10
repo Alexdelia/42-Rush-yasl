@@ -44,6 +44,7 @@
 {
 	0:=:7 0:!	// separator
 	0:=:8		// string
+	0:[#] 0 == ?	("no empty string\n" print 0 exit)
 	0:6			// int i
 	0:3			// bool start
 	
