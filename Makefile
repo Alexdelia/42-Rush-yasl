@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/04/10 00:51:20 by adelille         ###   ########.fr        #
+#    Updated: 2022/04/10 21:49:49 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,7 @@ ex01:
 	$(call test,$(EX01),"")
 	$(call test,$(EX01) Hello World 42 "Be Cool","Hello\nWorld\n42\nBe Cool\n")
 	$(call test,$(EX01) "\n","\\\n\n")
+	$(call test,$(EX01) "","\n")
 
 ex02:
 	$(call test,$(EX02),"")
@@ -110,10 +111,14 @@ ex02:
 	$(call test,$(EX02) 42 != 42,"0\n")
 	$(call test,$(EX02) yes + 42,"use int\n")
 	$(call test,$(EX02) 2n + 5,"7\n")
+	$(call test,$(EX02) "","")
+	$(call test,$(EX02) "" "","")
+	$(call test,$(EX02) "" "" "","use int\n")
 
 ex03:
 	$(call test,$(EX03),"")
 	$(call test,$(EX03) 1,"")
+	$(call test,$(EX03) 0 yes,"use int > 0\n")
 	$(call test,$(EX03) 1 yes,"yes\n")
 	$(call test,$(EX03) 2 yes,"yesyes\n")
 	$(call test,$(EX03) 2 yes no,"yesyes\nnonono\n")
@@ -121,6 +126,8 @@ ex03:
 	$(call test,$(EX03) 1 "************" "******" "****" "---","************\n************\n************\n------------\n")
 	$(call test,$(EX03) no yes no,"use int\n")
 	$(call test,$(EX03) 2y yes no,"yesyes\nnonono\n")
+	$(call test,$(EX03) "","")
+	$(call test,$(EX03) "" "","use int > 0\n")
 
 ex04:
 	$(call test,$(EX04),"")
@@ -133,6 +140,7 @@ ex04:
 	$(call test,$(EX04) 10,"3628800\n")
 	$(call test,$(EX04) 100,"overflow\n")
 	$(call test,$(EX04) 010,"40320\n")
+	$(call test,$(EX04) "","use int > 0\n")
 
 ex05:
 	$(call test,$(EX05),"")
@@ -145,6 +153,8 @@ ex05:
 	@$(YASL) $(SRC)$(EX05) " " " Lorem ipsum dolor sit amet, consectetur adipiscing elit. " > you
 	@printf "Lorem\nipsum\ndolor\nsit\namet,\nconsectetur\nadipiscing\nelit.\n" > expected
 	@diff you expected
+	$(call test,$(EX05) "","")
+	$(call test,$(EX05) "" "","only 1 char alowed to split\n")
 
 #ex06:
 #	$(call test,$(EX06),"")
