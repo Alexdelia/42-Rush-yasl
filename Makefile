@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/04/10 22:31:39 by adelille         ###   ########.fr        #
+#    Updated: 2023/04/24 17:57:21 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -167,6 +167,6 @@ fclean:
 
 re:		fclean all
 
-.PHONY: all man test fclean re ex00 ex01 ex02 ex03 ex04 ex05 ex06 display
+.PHONY: all man test fclean re ex00 ex01 ex02 ex03 ex04 ex05 ex06
 
 # **************************************************************************** #
